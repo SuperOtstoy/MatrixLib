@@ -93,7 +93,7 @@ namespace linAlg {
 	inline T Matrix<T>::getValue(const size_t rowIndex, const size_t columnIndex) const{
 		size_t index = rowIndex + columnIndex * m_rows;
 		if (index > m_data.size()) {
-			throw std::exception("EXCEPTION: Matrix::getValue, out of range\n");
+			throw linAlgException("EXCEPTION: Matrix::getValue, out of range\n");
 		}
 		return m_data[index];
 	}
@@ -102,7 +102,7 @@ namespace linAlg {
 	inline void Matrix<T>::setValue(const T value, const size_t rowIndex, const size_t columnIndex){
 		size_t index = rowIndex + columnIndex * m_rows;
 		if (index > m_data.size()) {
-			throw std::exception("EXCEPTION: Matrix::getValue, out of range\n");
+			throw linAlgException("EXCEPTION: Matrix::getValue, out of range\n");
 		}
 		m_data[index] = value;
 	}
@@ -133,7 +133,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Matrix::sumThis\n");
+			throw linAlgException("EXCEPTION: invalid array size, Matrix::sumThis\n");
 		}
 	}
 
@@ -153,7 +153,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Matrix::minusThis\n");
+			throw linAlgException("EXCEPTION: invalid array size, Matrix::minusThis\n");
 		}
 	}
 
@@ -169,7 +169,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Matrix::operator-\n");
+			throw linAlgException("EXCEPTION: invalid array size, Matrix::operator-\n");
 		}
 		return result;
 	}
@@ -186,7 +186,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Matrix::operator-\n");
+			throw linAlgException("EXCEPTION: invalid array size, Matrix::operator-\n");
 		}
 		return result;
 	}
@@ -213,7 +213,7 @@ namespace linAlg {
 			
 		}
 		else{
-			throw std::exception("EXCEPTION: invalid array size, Matrix::operator\n");
+			throw linAlgException("EXCEPTION: invalid array size, Matrix::operator\n");
 		}
 	}
 

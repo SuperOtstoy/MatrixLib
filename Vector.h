@@ -79,7 +79,7 @@ namespace linAlg {
 			return getValue(rowIndex, 1);
 		}
 		catch (std::exception& ex) {
-			throw ex;
+			throw linAlgException(ex.what());
 		}
 	}
 
@@ -89,7 +89,7 @@ namespace linAlg {
 			setValue(value, rowIndex, 1);
 		}
 		catch (std::exception& ex) {
-			throw ex;
+			throw linAlgException(ex.what());
 		}
 	}
 
@@ -101,7 +101,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Vector::sumThis\n");
+			throw linAlgException("EXCEPTION: invalid array size, Vector::sumThis\n");
 		}
 	}
 
@@ -113,7 +113,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Vector::minusThis\n");
+			throw linAlgException("EXCEPTION: invalid array size, Vector::minusThis\n");
 		}
 	}
 
@@ -134,7 +134,7 @@ namespace linAlg {
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Vector::operator+\n");
+			throw linAlgException("EXCEPTION: invalid array size, Vector::operator+\n");
 		}
 
 		return result;
@@ -145,12 +145,12 @@ namespace linAlg {
 		Vector<T> result(m_rows);
 		if (arr.getRows() == m_rows && arr.getColumns() == m_columns) {
 			for (size_t index = 0; index < m_rows; ++index) {
-				T value = arr.getValue(index, 1) - m_data[index];
+				T value = m_data[index] - arr.getValue(index, 1);
 				result.setValue(value, index);
 			}
 		}
 		else {
-			throw std::exception("EXCEPTION: invalid array size, Vector::operator-\n");
+			throw linAlgException("EXCEPTION: invalid array size, Vector::operator-\n");
 		}
 
 		return result;
@@ -178,7 +178,7 @@ namespace linAlg {
 	template<typename T>
 	inline T Vector<T>::getValue(const size_t rowIndex, const size_t columnIndex) const{
 		if (rowIndex > m_data.size()) {
-			throw std::exception("EXCEPTION: Vector::getValue, out of range\n");
+			throw linAlgException("EXCEPTION: Vector::getValue, out of range\n");
 		}
 		return m_data[rowIndex];
 	}
@@ -186,7 +186,7 @@ namespace linAlg {
 	template<typename T>
 	inline void Vector<T>::setValue(const T value, const size_t rowIndex, const size_t columnIndex){
 		if (rowIndex > m_data.size()) {
-			throw std::exception("EXCEPTION: Vector::getValue, out of range\n");
+			throw linAlgException("EXCEPTION: Vector::getValue, out of range\n");
 		}
 		m_data[rowIndex] = value;
 	}

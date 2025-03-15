@@ -1,6 +1,7 @@
 #pragma once
 #include <type_traits>
 #include <vector>
+#include <string>
 
 namespace linAlg {
 	
@@ -41,6 +42,19 @@ namespace linAlg {
 		virtual void setValue(const T value, const size_t rowIndex, const size_t columnIndex) = 0;
 		//Получить данные из массива
 		virtual const std::vector<T>& getData() const = 0;	
+	};
+
+
+	class linAlgException : public std::exception {
+	public:
+		linAlgException(std::string message = "linAlgException exception") : m_message(message) {}
+
+		char const* what() const override {
+			return m_message.c_str();
+		}
+
+	private:
+		std::string m_message;
 	};
 
 }

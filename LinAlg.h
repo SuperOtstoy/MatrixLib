@@ -60,4 +60,5 @@ namespace linAlg {
 			throw std::exception("EXCEPTION: invalid array size, Matrix::multiThreadMatrixMultiplicationn");
 		}
 	}
+
 }
